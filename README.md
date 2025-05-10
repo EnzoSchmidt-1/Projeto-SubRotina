@@ -1,2 +1,2 @@
 # Projeto-2
-Projeto do 2 Bimestre
+projeto do 2 bimestre de Logica da Programação
