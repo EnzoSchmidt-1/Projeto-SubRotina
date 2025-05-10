@@ -1,0 +1,189 @@
+////////////////////////////////////////////////////////////////////////////
+-->Eu comecei o trabalho fazendo um modelo base do que eu queria no portugol
+-->Eu vou inserir aqui alguns dos estados de progresso dessa base
+////////////////////////////////////////////////////////////////////////////
+______________________________________________________________________________________________________________________________________________
+//Tentativa-#1
+programa{
+ cadeia nome, aprovacao,listaNome
+ real nota,nota2,nota3,media
+   //Funcão para cadastrar o nome e notas dos alunos
+   funcao Cadastro_de_nome () {
+    escreva("Digite um nome para ser cadastrado como\n")
+    leia(nome)
+    escreva("Agora digite suas três notas para calcular a media\n")
+
+
+    faca{
+     leia(nota)
+     se((nota>10)ou(nota<0)){escreva("Nota fora dos padrões permitidos\n")}
+     }enquanto((nota>10)ou(nota<0))
+
+
+    faca{
+     leia(nota2)
+     se((nota2>10)ou(nota2<0)){escreva("Nota fora dos padrões permitidos\n")}
+     }enquanto((nota2>10)ou(nota2<0))
+
+
+    faca{
+     leia(nota3)
+     se((nota3>10)ou(nota3<0)){escreva("Nota fora dos padrões permitidos\n")}
+     }enquanto((nota3>10)ou(nota3<0))
+     media=(nota+nota2+nota3)/3
+    }
+   funcao inicio(){
+    Cadastro_de_nome()
+    escreva("|Nome: ",nome,"|Nota 1: ",nota,"|Nota 2: ",nota2,"|Nota 3: ",nota3,"|Media: ",media,"|\n")
+   }
+}
+_______________________________________________________________________________________________________________________________________________________
+//Tentativa-#2
+programa{
+ cadeia nome, aprovacao,listaNome
+ real nota,nota2,nota3,media,s
+  //Função para calcular a media do aluno
+   funcao Med(){
+    media=(nota+nota2+nota3)/3}
+  //Função para verificar a aprovacão ou não do aluno
+   funcao Apro(){
+    se(media>=7.0){aprovacao="Aprovado, Parabens!!!!"}
+    senao aprovacao="Reprovado, Que pena."}
+  //Função para cadastrar o nome e notas dos alunos
+   funcao Cadastro_de_nome () {
+    escreva("|Digite um nome para ser cadastrado como|\n")
+    leia(nome)
+    escreva("|Agora digite suas três notas para calcular a media|\n")
+
+
+    faca{
+     leia(nota)
+     se((nota>10)ou(nota<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota>10)ou(nota<0))
+
+
+    faca{
+     leia(nota2)
+     se((nota2>10)ou(nota2<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota2>10)ou(nota2<0))
+
+
+    faca{
+     leia(nota3)
+     se((nota3>10)ou(nota3<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota3>10)ou(nota3<0))
+    }
+  //Função para mostrar o relatorio final com os alunos e suas notas
+   funcao Relatar(){escreva("|RELATORIO|")}
+  //Função Principal que o codigo aciona
+   funcao inicio(){
+    escreva("|-------------------|\n")
+    escreva("|SELECIONE UMA OPÇÃO|\n")
+    escreva("|-------------------|\n")
+    faca{
+    escreva("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO                   ")
+    leia(s)
+    escolha(s){
+      caso 1 :Cadastro_de_nome()
+        Med()
+        Apro()
+        escreva("|MEDIA: ",media,"|STATUS: ",aprovacao,"|")pare
+      caso 2:Relatar()pare
+      caso 3:pare
+      caso contrario:limpa()
+      escreva("PORFAVOR SELECIONAR UMA OPÇÃO VALIDA\n")
+     
+    }
+    }enquanto(s!=3)
+   }
+}
+____________________________________________________________________________________________________________________________________________________
+Tentativa-#3
+programa{
+ cadeia nome, aprovacao,listaNome
+ real nota,nota2,nota3,media
+ real s,r
+  //Função para calcular a media do aluno
+   funcao Med(){
+    media=(nota+nota2+nota3)/3}
+  //Função para verificar a aprovacão ou não do aluno
+   funcao Apro(){
+    se(media>=7.0){aprovacao="Aprovado, Parabens!!!!"}
+    senao aprovacao="Reprovado, Que pena."}
+  //Função para cadastrar o nome e notas dos alunos
+   funcao Cadastro_de_nome () {
+    escreva("|DIGITE UM NOME PARA SER CADASTRADO COMO|\n")
+    leia(nome)
+    escreva("|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|\n")
+
+
+
+
+    faca{
+     leia(nota)
+     se((nota>10)ou(nota<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota>10)ou(nota<0))
+
+
+
+
+    faca{
+     leia(nota2)
+     se((nota2>10)ou(nota2<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota2>10)ou(nota2<0))
+
+
+
+
+    faca{
+     leia(nota3)
+     se((nota3>10)ou(nota3<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota3>10)ou(nota3<0))
+    }
+  //Função para mostrar o relatorio final com os alunos e suas notas
+   funcao Relatar(){
+     escreva("-|RELATORIO|-\n")
+     faca{escreva("-|1-->VER ALUNOS CADASTRADOS|-\n")
+     escreva("-|2-->VOLTAR PRA TELA ANTERIOR|-\n")
+     leia(r)
+       escolha(r){
+       caso 1:limpa()
+       pare
+       caso 2:pare
+
+
+       }
+      }enquanto(r!=2)}
+  //Função Principal que o codigo aciona
+   funcao inicio(){
+    escreva("|-------------------|\n")
+    escreva("|SELECIONE UMA OPÇÃO|\n")
+    escreva("|-------------------|\n")
+    //utilizando o faca{}enquanto para fazer com que o sistema repita a ação de mostrar a interface para se poder cadastrar varios alunos
+    faca{
+    escreva("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO\n-|---->")
+    leia(s)
+    escolha(s){
+      caso 1 :limpa()
+       Cadastro_de_nome()
+        Med()
+        Apro()
+        escreva("|MEDIA: ",media,"|STATUS: ",aprovacao,"|\n")
+        pare
+      caso 2:limpa()
+        Relatar()pare
+      caso 3:limpa()
+      escreva("-|ADEUS|-")pare
+      caso contrario:limpa()
+      escreva("------------------------------------\nPORFAVOR SELECIONAR UMA OPÇÃO VALIDA\n------------------------------------\n")pare
+     
+    }
+    }enquanto(s!=3)
+   }
+}
+
+_________________________________________________________________________________________________________________________________________________________
+Nesse momento eu tinha atingido uma parede é não estava conseguindo prosseguir além disso 
+já que eu não tinha ideia de como fazer o programa se lembrar do nome é notas dos alunos, 
+para que eles fossem mostrados na função relatar()
+
