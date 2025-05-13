@@ -1,1 +1,126 @@
+############################################################
+-->Tinha começado á tentar usar vetor[] para passar os nomes
+############################################################
+programa{
+ cadeia nome[10]
+  //Função para cadastrar o nome e notas dos alunos
+   funcao Cadastro_de_nome () {
+    escreva("|DIGITE UM NOME PARA SER CADASTRADO COMO|\n")
+    leia(nome[0+numNome])
+    escreva("|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|\n")
+    numNome=numNome+1
+    }
+  //Função para mostrar o relatorio final com os alunos e suas notas
+   funcao Relatar(){
+     escreva("-|RELATORIO|-\n")
+     faca{escreva("-|1-->VER ALUNOS CADASTRADOS|-\n")
+     escreva("-|2-->VOLTAR PRA TELA ANTERIOR|-\n")
+     leia(r)
+       escolha(r){
+       caso 1:limpa()
+       escreva("|NOME:",nome[0],"|NOTAS: ",nota," ",nota2," ",nota3," |\n")
+       pare
+       caso 2:limpa()pare
+       }
+      }enquanto(r!=2)}
+_______________________________________________________________________________________________________
+######################################################
+-->Teste usando o para e vetor para armazenar os nomes
+-->Tambem dando uma organizada
+######################################################
+programa{
+//VARIAVEIS
+   //usada pra escrever e armazenar os nomes dos alunos
+   cadeia nome[10]
+   //Feita pra determinar a mensagem de passagem
+   cadeia aprovacao
+   //Variavel que permite que se armazene varios nomes e numeros
+   inteiro numProg=0
+   //variaveis para definir as notas e média
+   real nota,nota2,nota3,media
+   //variaveis que definem os escolha caso
+   real s,r
+   inteiro lista
+//Função para calcular a média do aluno
+   funcao Med(){
+    media=(nota+nota2+nota3)/3}
+//Função para verificar a aprovacão ou não do aluno
+   funcao Apro(){
+    se(media>=7.0){aprovacao="Aprovado, Parabens!!!!"}
+    senao aprovacao="Reprovado, Que pena."}
+//Função para cadastrar o nome e notas dos alunos
+   funcao Cadastro_de_nome () {
+    escreva("|DIGITE UM NOME PARA SER CADASTRADO COMO|\n")
+    leia(nome[0+numProg])
+    escreva("|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|\n")
+    numProg=numProg+1
 
+
+
+
+    faca{
+     leia(nota)
+     se((nota>10)ou(nota<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota>10)ou(nota<0))
+
+
+
+
+    faca{
+     leia(nota2)
+     se((nota2>10)ou(nota2<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota2>10)ou(nota2<0))
+
+
+
+
+    faca{
+     leia(nota3)
+     se((nota3>10)ou(nota3<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }enquanto((nota3>10)ou(nota3<0))
+    }
+//Função para mostrar o relatorio final com os alunos e suas notas
+   funcao Relatar(){
+     escreva("-|RELATORIO|-\n")
+     faca{escreva("-|1-->VER ALUNOS CADASTRADOS|-\n")
+     escreva("-|2-->VOLTAR PRA TELA ANTERIOR|-\n")
+     leia(r)
+       escolha(r){
+       caso 1:limpa()
+       para(lista=0;lista<=numProg;lista++){
+        escreva("|NOME:",nome[0+lista],"|NOTAS: ",nota," ",nota2," ",nota3," |\n")
+       }
+       pare
+       caso 2:limpa()pare
+
+
+       }
+      }enquanto(r!=2)}
+//Função Principal que o codigo aciona
+   funcao inicio(){
+    escreva("|-------------------|\n")
+    escreva("|SELECIONE UMA OPÇÃO|\n")
+    escreva("|-------------------|\n")
+    //utilizando o faca{}enquanto para fazer com que o sistema repita a ação de mostrar a interface para se poder cadastrar varios alunos
+    faca{
+    escreva("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO\n-|---->")
+    leia(s)
+    escolha(s){
+      caso 1 :limpa()
+       Cadastro_de_nome()
+        Med()
+        Apro()
+        escreva("|MEDIA: ",media,"|STATUS: ",aprovacao,"|\n")
+        pare
+      caso 2:limpa()
+        Relatar()pare
+      caso 3:limpa()
+      escreva("-|ADEUS|-")pare
+      caso contrario:limpa()
+      escreva("------------------------------------\nPORFAVOR SELECIONAR UMA OPÇÃO VALIDA\n------------------------------------\n")pare
+     
+    }
+    }enquanto(s!=3)
+   }
+}
+____________________________________________________________________________________________________________________________________________________
