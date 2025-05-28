@@ -1,1 +1,107 @@
+//////////////////////////////////////////////////////////////////////////////////////////////
+//-->LINK DO SITE QUE EU USEI DE APOIO:  https://www.w3schools.com/java/java_class_methods.asp
+//--> Comecei a passar pra java 
+//////////////////////////////////////////////////////////////////////////////////////////////
+__________________________________________________________________________________________________________________________
+import java.Util.Scanner;
+public class PrimeiraTentativa {
+//VARIAVEIS
+   //VAriavel scanner global
+   Scanner ler;
+   //usada pra escrever e armazenar os nomes dos alunos
+   long nome[];
+   //Feita pra determinar a mensagem de passagem
+   long aprovacao[];
+   //Variavel feita pra determinar qual [] dos vetores se utiliza
+   int numProg=0;
+   //Variaveis para definir as notas e média
+   float nota[],nota2[],nota3[];
+   float media[];
+   //Variaveis que definem os escolha caso
+   float s,r;
+   //Variavel utilizada para o para da função relatar() funcionar é pra o codigo so escreva vetores definidos
+   int lista;
+//Função para calcular a média do aluno
+    static void media(strings[] args){
+    media[0+numProg]=(nota[0+numProg]+nota2[0+numProg]+nota3[0+numProg])/3};
+//Função para verificar a aprovacão ou não do aluno
+    public static void Main (strings[] args) {
+    cadeia cadastro;
+    ler =new Scanner(System.in);
+    system.out.println("");
+    }
+}
+______________________________________________________________________________________________________________________________
+--> Eu fiquei preso tentando descobrir o porque as variaveis globais não estavam funcionando nas funções
+-->Mas ai eu conferi no site que eles precisavam ser colocado "static" antes da variavel 
+______________________________________________________________________________________________________________________________
+import java.Util.Scanner;
+public class PrimeiraTentativa {
+//VARIAVEIS
+   //Variavel scanner global(pra facilitar o processo)
+   static Scanner ler;
+   //usada pra escrever e armazenar os nomes dos alunos
+   static long nome[];
+   //Feita pra determinar a mensagem de passagem
+   static long aprovacao[];
+   //Variavel feita pra determinar qual [] dos vetores se utiliza
+   static int numProg=0;
+   //Variaveis para definir as notas e média
+   static float nota[],nota2[],nota3[];
+   static float media[];
+   //Variaveis que definem os escolha caso
+   static float s,r;
+   //Variavel utilizada para o para da função relatar() funcionar é pra o codigo so escreva vetores definidos
+   static int lista;
+//Função para calcular a média do aluno
+    static void media(strings[] args){
+    media[0+numProg]=(nota[0+numProg]+nota2[0+numProg]+nota3[0+numProg])/3};
+//Função para verificar a aprovacão ou não do aluno
+
+    public static void Main (strings[] args) {
+    cadeia cadastro;
+    ler =new Scanner(System.in);
+    system.out.println("");
+    }
+}
+______________________________________________________________________________________________________________________________
+--> Então passei a parte do cadastro do aluno pra java
+--> trocando os escrever por "system.out.println()", ou por ||, se por if, enquanto por do
+
+______________________________________________________________________________________________________________________________
+//Função para cadastrar o nome e notas dos alunos
+   static void Cadastro_de_nome () {
+    system.out.println("|DIGITE UM NOME PARA SER CADASTRADO COMO|\n");
+    leia(nome[0+numProg]);
+    system.out.println("|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|\n");
+    
+    do{
+     ler(nota[0+numProg]);
+     if((nota[0+numProg]>10)||(nota[0+numProg]<0)){system.out.println("|Nota fora dos padrões permitidos|\n");};
+     }while((nota[0+numProg]>10)||(nota[0+numProg]<0));
+
+
+    do{
+     ler(nota2[0+numProg]);
+     if((nota2[0+numProg]>10)||(nota2[0+numProg]<0)){system.out.println("|Nota fora dos padrões permitidos|\n");};
+     }while((nota2[0+numProg]>10)||(nota2[0+numProg]<0));
+
+
+    do{
+     ler(nota3[0+numProg])
+     if((nota3[0+numProg]>10)ou(nota3[0+numProg]<0)){escreva("|Nota fora dos padrões permitidos|\n")}
+     }while((nota3[0+numProg]>10)ou(nota3[0+numProg]<0))
+    }
+    public static void Main (strings[] args) {
+    cadeia cadastro;
+    ler =new Scanner(System.in);
+    system.out.println("");
+    }
+}
+
+
+
+
+
+
 
