@@ -2,11 +2,11 @@ ________________________________________________________________________________
 |-->Agora eu comecei a alterar os ler para que eles funcionem
 |
 ____________________________________________________________________________________________________________________________________________
-import java.Util.Scanner;//Faz o importe da função Scanner para ler as variaveis do usuário
+import java.util.Scanner;//Faz o importe da função Scanner para ler as variaveis do usuário
 public class PrimeiraTentativa {
 //VARIAVEIS
    //Variavel scanner global(pra facilitar o processo)
-   static java.util.Scanner ler;
+   static Scanner ler;
    //usada pra escrever e armazenar os nomes dos alunos
    static String nome[];
    //Feita pra determinar a mensagem de passagem
@@ -31,70 +31,73 @@ public class PrimeiraTentativa {
 //Função para cadastrar o nome e notas dos alunos
    static void Cadastro_de_nome () {
     System.out.println("|DIGITE UM NOME PARA SER CADASTRADO COMO|\n");
-    leia(nome[0+numProg]);
+    nome[0+numProg]= ler.nextLine();
     System.out.println("|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|\n");
     
     do{
-     ler(nota[0+numProg]);
+     nota[0+numProg]=ler.nextFloat();
      if((nota[0+numProg]>10)||(nota[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|\n");}
      }while((nota[0+numProg]>10)||(nota[0+numProg]<0));
 
 
     do{
-     ler(nota2[0+numProg]);
+     nota2[0+numProg]=ler.nextFloat();
      if((nota2[0+numProg]>10)||(nota2[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|\n");}
      }while((nota2[0+numProg]>10)||(nota2[0+numProg]<0));
 
 
     do{
-     ler(nota3[0+numProg]);
+     nota3[0+numProg]=ler.nextFloat();
      if((nota3[0+numProg]>10)||(nota3[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|\n");}
      }while((nota3[0+numProg]>10)||(nota3[0+numProg]<0));
     }
-    //Função para o usuario ver os alunos cadastrados
+  //Função para o usuario ver os alunos cadastrados
    static void Relatar(){
     System.out.println("-|RELATORIO|-\n");
-    do{System.out.println("-|1--> VER ALUNOS CADASTRADOS");
+    do{
+    System.out.println("-|1--> VER ALUNOS CADASTRADOS");
     System.out.println("-|2-->VOLTAR PRA TELA ANTERIOR");
     r = ler.nextInt();
      switch(r){
-       case 1:limpa();
+       case 1:;
        for(lista=0;lista<=numProg-1;lista++){
-        System.out.println("|NOME:",nome[0+lista],"|NOTAS: ",nota[0+lista]," ",nota2[0+lista]," ",nota3[0+lista]," |MÉDIA: ",media[0+lista],"|APROVAÇÃO: ",aprovacao[0+lista],"\n");
+        System.out.printf("|NOME:",nome[0+lista],"|NOTAS: ",nota[0+lista]," ",nota2[0+lista]," ",nota3[0+lista]," |MÉDIA: ",media[0+lista],"|APROVAÇÃO: ",aprovacao[0+lista],"\n");
        }break;
-       case 2:limpa();break;
+       case 2:break;
 
      };
     }while(r!=2);
    }
     
    public static void main(String[] args) {
-    ler = new java.util.Scanner(System.in);
     System.out.println("|-------------------|");
     System.out.println("|SELECIONE UMA OPÇÃO|");
     System.out.println("|-------------------|");
     //utilizando o do{}while para fazer com que o sistema repita a ação de mostrar a interface para se poder cadastrar varios alunos
     do{
     System.out.println("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO\n-|---->");
-    leia(s);
+    s= ler.nextInt();
     switch(s){
-      case 1 :limpa();
+      case 1 :
        Cadastro_de_nome();
         media();
         Apro();
-        System.out.println("|MEDIA: ",media[0+numProg],"|STATUS: ",aprovacao[0+numProg],"|\n");
+        System.out.println("|MEDIA: ");
+        System.out.println(media[0+numProg]);
+        System.out.printf("|STATUS: ",aprovacao[0+numProg],"|\n");
          //aumentando em 1 o numProg faz com que as os dados utilizadas para as variaveis:media,nota(1 ate 3),nome e aprovação
          numProg=numProg+1;
         break;
-      case 2:limpa();
+      case 2:
         Relatar();break;
-      case 3:limpa();
+      case 3:
       System.out.println("-|ADEUS|-");break;
       //caso o usuario digitar um s não permitido ele e pedido para repetir o processo
-      default:limpa();
+      default:
       System.out.println("------------------------------------\nPORFAVOR SELECIONAR UMA OPÇÃO VALIDA\n------------------------------------\n");
       break;
     }
     }while(s!=3);//se o usuario digitar 3 o programa acaba
     }
 }
+____________________________________________________________________________________________________________________________________________
