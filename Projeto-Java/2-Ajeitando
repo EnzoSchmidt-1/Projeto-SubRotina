@@ -1,21 +1,19 @@
 ____________________________________________________________________________________________________________________________________________
-|-->Agora eu comecei a alterar os ler para que eles funcionem
-|
+//|-->Agora eu comecei a alterar os ler para que eles funcionem normalmente
+//|-->Por isso eu criei uma variavel propria pra cada Scanner como(ler"nome da variavel")
 ____________________________________________________________________________________________________________________________________________
 import java.util.Scanner;//Faz o importe da função Scanner para ler as variaveis do usuário
 public class PrimeiraTentativa {
 //VARIAVEIS
-   //Variavel scanner global(pra facilitar o processo)
-   static Scanner ler;
    //usada pra escrever e armazenar os nomes dos alunos
-   static String nome[];
+   static String[] nome;
    //Feita pra determinar a mensagem de passagem
-   static String aprovacao[];
+   static String[] aprovacao;
    //Variavel feita pra determinar qual [] dos vetores se utiliza
    static int numProg=0;
    //Variaveis para definir as notas e média
-   static float nota[],nota2[],nota3[];
-   static float media[];
+   static float[] nota,nota2,nota3;
+   static float[] media;
    //Variaveis que definem os escolha caso
    static int s,r;
    //Variavel utilizada para o para da função relatar() funcionar é pra o codigo so escreva vetores definidos
@@ -31,23 +29,26 @@ public class PrimeiraTentativa {
 //Função para cadastrar o nome e notas dos alunos
    static void Cadastro_de_nome () {
     System.out.println("|DIGITE UM NOME PARA SER CADASTRADO COMO|\n");
-    nome[0+numProg]= ler.nextLine();
+    Scanner lerNome = new Scanner(System.in) ;
+    nome[numProg]= lerNome.nextLine();
     System.out.println("|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|\n");
-    
+    Scanner lerNota1 = new Scanner(System.in);
+    Scanner lerNota2 = new Scanner(System.in);
+    Scanner lerNota3 = new Scanner(System.in);
     do{
-     nota[0+numProg]=ler.nextFloat();
+     nota[0+numProg]=lerNota1.nextFloat();
      if((nota[0+numProg]>10)||(nota[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|\n");}
      }while((nota[0+numProg]>10)||(nota[0+numProg]<0));
 
 
     do{
-     nota2[0+numProg]=ler.nextFloat();
+     nota2[0+numProg]=lerNota2.nextFloat();
      if((nota2[0+numProg]>10)||(nota2[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|\n");}
      }while((nota2[0+numProg]>10)||(nota2[0+numProg]<0));
 
 
     do{
-     nota3[0+numProg]=ler.nextFloat();
+     nota3[0+numProg]=lerNota3.nextFloat();
      if((nota3[0+numProg]>10)||(nota3[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|\n");}
      }while((nota3[0+numProg]>10)||(nota3[0+numProg]<0));
     }
@@ -57,11 +58,12 @@ public class PrimeiraTentativa {
     do{
     System.out.println("-|1--> VER ALUNOS CADASTRADOS");
     System.out.println("-|2-->VOLTAR PRA TELA ANTERIOR");
-    r = ler.nextInt();
+    Scanner lerR = new Scanner(System.in);
+    r = lerR.nextInt();
      switch(r){
        case 1:;
        for(lista=0;lista<=numProg-1;lista++){
-        System.out.printf("|NOME:",nome[0+lista],"|NOTAS: ",nota[0+lista]," ",nota2[0+lista]," ",nota3[0+lista]," |MÉDIA: ",media[0+lista],"|APROVAÇÃO: ",aprovacao[0+lista],"\n");
+        System.out.println("|NOME:"+nome[0+lista]+"|NOTAS: "+nota[0+lista]+" "+nota2[0+lista]+" "+nota3[0+lista]+" |MÉDIA: "+media[0+lista]+"|APROVAÇÃO: "+aprovacao[0+lista]);
        }break;
        case 2:break;
 
@@ -69,14 +71,15 @@ public class PrimeiraTentativa {
     }while(r!=2);
    }
     
-   public static void main(String[] args) {
+  public static void main(String[] args) {
     System.out.println("|-------------------|");
     System.out.println("|SELECIONE UMA OPÇÃO|");
     System.out.println("|-------------------|");
     //utilizando o do{}while para fazer com que o sistema repita a ação de mostrar a interface para se poder cadastrar varios alunos
     do{
-    System.out.println("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO\n-|---->");
-    s= ler.nextInt();
+    System.out.print("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO\n-|---->");
+    Scanner lerS = new Scanner(System.in);
+    s= lerS.nextInt();
     switch(s){
       case 1 :
        Cadastro_de_nome();
@@ -84,7 +87,7 @@ public class PrimeiraTentativa {
         Apro();
         System.out.println("|MEDIA: ");
         System.out.println(media[0+numProg]);
-        System.out.printf("|STATUS: ",aprovacao[0+numProg],"|\n");
+        System.out.println("|STATUS: "+aprovacao[0+numProg]+"|");
          //aumentando em 1 o numProg faz com que as os dados utilizadas para as variaveis:media,nota(1 ate 3),nome e aprovação
          numProg=numProg+1;
         break;
@@ -101,3 +104,106 @@ public class PrimeiraTentativa {
     }
 }
 ____________________________________________________________________________________________________________________________________________
+//-->Agora precisei arrumar os vetores pois eles não funcionavam
+//-->Aproveitei e arrumei um pouco o layout geral
+//-->https://www.devmedia.com.br/trabalhando-com-arrays-em-java/25530
+____________________________________________________________________________________________________________________________________________
+import java.util.Scanner;//Faz o importe da função Scanner para ler as variaveis do usuário
+public class PrimeiraTentativa {
+//VARIAVEIS
+   //usada pra escrever e armazenar os nomes dos alunos
+   static String[] nome = new String[50];
+   //Feita pra determinar a mensagem de passagem
+   static String[] aprovacao = new String[50];
+   //Variavel feita pra determinar qual [] dos vetores se utiliza
+   static int numProg=0;
+   //Variaveis para definir as notas e média
+   static float[] nota= new float[50],nota2= new float[50],nota3= new float[50];
+   static float[] media= new float[50];
+   //Variaveis que definem os escolha caso
+   static int s,r;
+   //Variavel utilizada para o para da função relatar() funcionar é pra o codigo so escreva vetores definidos
+   static int lista;
+//Função para calcular a média do aluno
+   static void media(){
+    media[0+numProg]=(nota[0+numProg]+nota2[0+numProg]+nota3[0+numProg])/3;};
+//Função para verificar a aprovacão ou não do aluno
+   static void Apro(){
+    if(media[0+numProg]>=7.0){aprovacao[0+numProg]="Aprovado, Parabens!!!!";}
+    else aprovacao[0+numProg]="Reprovado, Que pena.";
+   };
+//Função para cadastrar o nome e notas dos alunos
+   static void Cadastro_de_nome () {
+    System.out.println("-|DIGITE UM NOME PARA SER CADASTRADO COMO|");
+    Scanner lerNome = new Scanner(System.in) ;
+    nome[numProg]= lerNome.nextLine();
+    System.out.println("-|AGORA DIGITE SUAS TRÊS NOTAS PARA FAZER A MÉDIA|");
+    Scanner lerNota1 = new Scanner(System.in);
+    Scanner lerNota2 = new Scanner(System.in);
+    Scanner lerNota3 = new Scanner(System.in);
+    do{
+     nota[0+numProg]=lerNota1.nextFloat();
+     if((nota[0+numProg]>10)||(nota[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|");}
+     }while((nota[0+numProg]>10)||(nota[0+numProg]<0));
+
+
+    do{
+     nota2[0+numProg]=lerNota2.nextFloat();
+     if((nota2[0+numProg]>10)||(nota2[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|");}
+     }while((nota2[0+numProg]>10)||(nota2[0+numProg]<0));
+
+
+    do{
+     nota3[0+numProg]=lerNota3.nextFloat();
+     if((nota3[0+numProg]>10)||(nota3[0+numProg]<0)){System.out.println("|Nota fora dos padrões permitidos|");}
+     }while((nota3[0+numProg]>10)||(nota3[0+numProg]<0));
+    }
+  //Função para o usuario ver os alunos cadastrados
+   static void Relatar(){
+    System.out.println("-|RELATORIO|-");
+    do{
+    System.out.println("-|1--> VER ALUNOS CADASTRADOS");
+    System.out.println("-|2-->VOLTAR PRA TELA ANTERIOR");
+    Scanner lerR = new Scanner(System.in);
+    r = lerR.nextInt();
+     switch(r){
+       case 1:;
+       for(lista=0;lista<=numProg-1;lista++){
+        System.out.println("-|NOME:"+nome[0+lista]+"|NOTAS: "+nota[0+lista]+" "+nota2[0+lista]+" "+nota3[0+lista]+" |MÉDIA: "+media[0+lista]+"|APROVAÇÃO: "+aprovacao[0+lista]);
+       }break;
+       case 2:break;
+
+     };
+    }while(r!=2);
+   }
+    
+  public static void main(String[] args) {
+    System.out.println("|-------------------|");
+    System.out.println("|SELECIONE UMA OPÇÃO|");
+    System.out.println("|-------------------|");
+    //utilizando o do{}while para fazer com que o sistema repita a ação de mostrar a interface para se poder cadastrar varios alunos
+    do{
+    System.out.print("-|1-->CADASTRAR ALUNO\n-|2-->RELATORIO DE ALUNOS\n-|3-->ENCERRAR PROCESSO\n-|---->");
+    Scanner lerS = new Scanner(System.in);
+    s= lerS.nextInt();
+    switch(s){
+      case 1 :
+       Cadastro_de_nome();
+        media();
+        Apro();
+        System.out.println("-|MEDIA: "+media[0+numProg]+"-|STATUS: "+aprovacao[0+numProg]+"|");
+         //aumentando em 1 o numProg faz com que as os dados utilizadas para as variaveis:media,nota(1 ate 3),nome e aprovação
+         numProg=numProg+1;
+        break;
+      case 2:
+        Relatar();break;
+      case 3:
+        System.out.println("-|ADEUS|-");break;
+      //caso o usuario digitar um s não permitido ele e pedido para repetir o processo
+      default:
+      System.out.println("------------------------------------\nPORFAVOR SELECIONAR UMA OPÇÃO VALIDA\n------------------------------------\n");
+      break;
+    }
+    }while(s!=3);//se o usuario digitar 3 o programa acaba
+    }
+}
