@@ -1,2 +1,2 @@
-# Projeto-2
-projeto do 2 bimestre de Logica da Programação
+# Projeto-SubRotina
+Eu fiz esse projeto primeiro então ele esta se utilizando muito de portugol no começo mas logo depois e passado pra java
